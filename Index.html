@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Xino Store - Tienda online premium">
+<title>Xino Store</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="xino.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+<div class="container">
+
+<a class="navbar-brand fw-bold logo-text" href="#">
+🐙 Xino Store
+</a>
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+
+<form class="d-flex mx-auto buscador-box">
+<input type="search" class="form-control buscador-input" id="buscador" placeholder="Buscar productos...">
+</form>
+
+<ul class="navbar-nav ms-auto align-items-center">
+
+<li class="nav-item me-3">
+<a class="nav-link" href="#productos">Productos</a>
+</li>
+
+<li class="nav-item me-3">
+<a class="nav-link" href="#ofertas">Ofertas</a>
+</li>
+
+<li class="nav-item me-3">
+<a class="nav-link" href="#" onclick="abrirLoginAdmin()">Admin</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#" onclick="toggleCarrito()">
+🛒 <span id="contador" class="badge bg-danger rounded-pill">0</span>
+</a>
+</li>
+
+</ul>
+
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<div class="row align-items-center">
+
+<div class="col-lg-6">
+<h1 class="hero-title">Compra fácil, rápido y seguro</h1>
+<p class="hero-text">
+Tecnología, hogar y accesorios premium con atención personalizada.
+</p>
+
+<a href="#productos" class="btn btn-primary btn-lg">
+Ver Productos
+</a>
+</div>
+
+<div class="col-lg-6 text-center">
+<img src="producto1.jpg" class="hero-img">
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- CATEGORÍAS -->
+<section class="container py-5">
+
+<h2 class="section-title">Categorías</h2>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+<div class="categoria-box">🎧 Tecnología</div>
+</div>
+
+<div class="col-md-4">
+<div class="categoria-box">🏠 Hogar</div>
+</div>
+
+<div class="col-md-4">
+<div class="categoria-box">🎁 Accesorios</div>
+</div>
+
+</div>
+</section>
+
+<!-- PRODUCTOS -->
+<section class="container py-5" id="productos">
+
+<h2 class="section-title">Productos Destacados</h2>
+
+<div class="row g-4" id="productos-container">
+
+<div class="col-md-4 producto-item">
+<div class="card producto-card h-100">
+
+<span class="badge bg-danger badge-top">Oferta</span>
+
+<img src="producto1.jpg" class="producto-img">
+
+<div class="card-body text-center">
+<h5>Audífonos Bluetooth</h5>
+<p class="precio">$10000</p>
+<p>Sonido premium y batería duradera.</p>
+
+<button class="btn btn-dark w-100"
+onclick="agregarCarrito('Audífonos Bluetooth',10000)">
+Agregar al carrito
+</button>
+
+</div>
+</div>
+</div>
+
+<div class="col-md-4 producto-item">
+<div class="card producto-card h-100">
+
+<span class="badge bg-success badge-top">Nuevo</span>
+
+<img src="producto2.jpg" class="producto-img">
+
+<div class="card-body text-center">
+<h5>Luces LED RGB</h5>
+<p class="precio">$8000</p>
+<p>Ideal para setup gamer.</p>
+
+<button class="btn btn-dark w-100"
+onclick="agregarCarrito('Luces LED RGB',8000)">
+Agregar al carrito
+</button>
+
+</div>
+</div>
+</div>
+
+<div class="col-md-4 producto-item">
+<div class="card producto-card h-100">
+
+<img src="producto3.jpg" class="producto-img">
+
+<div class="card-body text-center">
+<h5>Parlante BLIK</h5>
+<p class="precio">$30000</p>
+<p>Parlante de alta definicion.</p>
+
+<button class="btn btn-dark w-100"
+onclick="agregarCarrito('Parlante BLIK',30000)">
+Agregar al carrito
+</button>
+
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- OFERTAS -->
+<section class="ofertas py-5" id="ofertas">
+<div class="container text-center text-white">
+<h2>🔥 Ofertas del Mes</h2>
+<p>Hasta 30% descuento.</p>
+</div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="container py-5">
+
+<h2 class="section-title">Clientes felices</h2>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+<div class="testimonio">⭐⭐⭐⭐⭐ Excelente atención.</div>
+</div>
+
+<div class="col-md-4">
+<div class="testimonio">⭐⭐⭐⭐⭐ Muy buenos productos.</div>
+</div>
+
+<div class="col-md-4">
+<div class="testimonio">⭐⭐⭐⭐⭐ Recomiendo la tienda.</div>
+</div>
+
+</div>
+</section>
+
+<!-- CARRITO PRO -->
+<div id="panel-carrito" class="panel-carrito" role="dialog">
+
+<div class="carrito-header">
+
+<h4>🛒 Tu carrito</h4>
+
+<button class="cerrar-btn"
+onclick="cerrarCarrito()"
+aria-label="Cerrar carrito">
+✖
+</button>
+
+</div>
+
+<div class="drag-bar"></div>
+
+<hr>
+
+<!-- ✅ SOLO AGREGADO: contenedor scroll -->
+<div class="carrito-contenido">
+<ul id="carrito" class="list-group mb-3"></ul>
+</div>
+
+<h5>Total: $<span id="total">0</span></h5>
+
+<button class="btn btn-success w-100 mt-3"
+onclick="enviarWhatsApp()">
+Comprar por WhatsApp
+</button>
+
+<button class="btn btn-primary w-100 mt-2"
+onclick="abrirPago()">
+Pagar Online
+</button>
+
+</div>
+
+<div id="overlay" class="overlay"
+onclick="cerrarCarrito()"></div>
+
+<!-- BOTÓN FLOTANTE MOBILE -->
+<button class="carrito-float"
+onclick="toggleCarrito()">
+🛒 <span id="contador2">0</span>
+</button>
+
+<!-- MODAL PAGOS -->
+<div id="modalPago" class="modal-custom">
+<div class="modal-box">
+
+<h4>Método de Pago</h4>
+
+<button class="btn btn-warning w-100 mt-2">
+MercadoPago (Próximamente)
+</button>
+
+<button class="btn btn-danger w-100 mt-2">
+WebPay (Próximamente)
+</button>
+
+<button class="btn btn-success w-100 mt-2"
+onclick="transferenciaBancaria()">
+Transferencia Bancaria
+</button>
+
+<button class="btn btn-dark w-100 mt-3"
+onclick="cerrarPago()">
+Cerrar
+</button>
+
+</div>
+</div>
+
+<!-- LOGIN ADMIN -->
+<div id="loginAdmin" class="modal-custom">
+<div class="modal-box">
+
+<h4>Acceso Administrador</h4>
+
+<input type="password"
+id="claveAdmin"
+class="form-control mt-3"
+placeholder="Contraseña">
+
+<button class="btn btn-dark w-100 mt-3"
+onclick="loginAdmin()">
+Ingresar
+</button>
+
+<button class="btn btn-secondary w-100 mt-2"
+onclick="cerrarLoginAdmin()">
+Cancelar
+</button>
+
+</div>
+</div>
+
+<!-- PANEL ADMIN -->
+<div id="adminPanel" class="modal-custom">
+<div class="modal-box">
+
+<h4>Panel Administrador</h4>
+
+<input type="text" id="nuevoNombre" class="form-control mt-2" placeholder="Nombre producto">
+<input type="number" id="nuevoPrecio" class="form-control mt-2" placeholder="Precio">
+<input type="text" id="nuevoDesc" class="form-control mt-2" placeholder="Descripción">
+<input type="text" id="nuevoImg" class="form-control mt-2" placeholder="Imagen">
+
+<button class="btn btn-success w-100 mt-3"
+onclick="agregarProductoAdmin()">
+Agregar Producto
+</button>
+
+<button class="btn btn-dark w-100 mt-2"
+onclick="cerrarAdmin()">
+Cerrar
+</button>
+
+</div>
+</div>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/56978603436"
+target="_blank"
+class="whatsapp-float">
+💬
+</a>
+
+<!-- FOOTER -->
+<footer class="footer text-center">
+<div class="container">
+<p>© 2026 Xino Store</p>
+<p>Chile</p>
+</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
